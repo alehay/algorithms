@@ -24,7 +24,6 @@ void insertion_sort (int arr[], int length) {
     return;
 }
 
-
 int main (int argc , char * argv []) {
     if (argc > 0) {
         printf ("program run %s \n" , argv[0]);
@@ -42,15 +41,14 @@ int main (int argc , char * argv []) {
     }
     printf ("\n");
 
-
     insertion_sort(num_arr_ptr, argc-1);
 
     printf ("sorted array : \n");
-
     for (int i = 0; i < argc-1; ++i ) {
         printf(" %d",num_arr_ptr[i]);
     }
     printf ("\n");
+    free (num_arr_ptr);
 
     return 0; 
 }
