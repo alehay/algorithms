@@ -1,54 +1,31 @@
-#include <iostream>
+#include <stdlib.h>
 #include <stdio.h>
-#include <cstdlib>
-
-void insertion_sort (int arr[], int length) {
-    int iteration = 1; 
-    for (int j = 1; j < length; ++j) {
-        int temp_key = arr[j];
-        int i = j - 1;
-        while (i>=0 && arr[i] > temp_key)
-        {
-            arr[i+1] = arr[i];
-            --i;
-            arr[i+1] = temp_key;
-
-            // print 
-            printf("\n iter is %d \n", iteration++);
-            for (int index = 0; index < length; ++index) {
-                printf(" %d",arr[index]);
-            }
-        }
+/* c style */
+void sort (int*arr, int lenght){
+  for (int j = 1; j < lenght; ++j) {
+    int key = arr[j];
+    for (int i = j - 1; i >= 0 && arr[i] > key; --i) {
+      arr[i+1] = arr[i];
+      arr[i] = key;
     }
-    printf("\n");
-    return;
+  }
 }
 
-int main (int argc , char * argv []) {
-    if (argc > 0) {
-        printf ("program run %s \n" , argv[0]);
-    }
+int main (int argc, char * argv[]) {
+  int lenght = argc -1;
+  int * arr = (int *) malloc (sizeof(int) * lenght);
 
-    int* num_arr_ptr = (int*) malloc (argc-1);
-    if (num_arr_ptr == nullptr) {
-        return 1; 
-    }
-
-    printf ("source array : \n");
-    for (int i = 0; i < argc-1; ++i ) {
-        num_arr_ptr[i] = std::atoi(argv[i+1]);
-        printf(" %d",num_arr_ptr[i]);
-    }
-    printf ("\n");
-
-    insertion_sort(num_arr_ptr, argc-1);
-
-    printf ("sorted array : \n");
-    for (int i = 0; i < argc-1; ++i ) {
-        printf(" %d",num_arr_ptr[i]);
-    }
-    printf ("\n");
-    free (num_arr_ptr);
-
-    return 0; 
+  printf("\n source arr : \n");
+  for (int i = 0; i < lenght; ++i) {
+    arr[i] = atoi(argv[i+1]);
+    printf(" %d", arr[i]);
+  }
+  printf("\n sorted array : \n");
+  sort(arr, lenght);
+  for (int i = 0; i < lenght; ++i){
+    printf(" %d",arr[i]);
+  }
+  printf("\n");
+  free (arr);
+  return 0;
 }
