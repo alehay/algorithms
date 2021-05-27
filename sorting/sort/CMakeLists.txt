@@ -36,5 +36,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 
-#add_executable(insertion-sort-kormen insertion-sort-kormen.cpp)
+add_executable(insertion-sort-kormen insertion-sort-kormen.cpp)
 add_executable(merge_sort_kormen merge_sort_kormen.cpp)

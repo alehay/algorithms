@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 void merge (int * arr, int iter_start_first, int iter_start_second, int lenght) {
-  int left_range = iter_start_second - iter_start_first + 1;
+  int left_range = iter_start_second - iter_start_first + 1; 
   int right_range = lenght - iter_start_second;
   int * left_arr = (int*)malloc(sizeof(int)*left_range);
   int * right_arr = (int*)malloc(sizeof(int)*right_range);
@@ -47,7 +47,9 @@ int main (int argc, char * argv []) {
     printf(" %d", arr[i]);
   }
   printf("\n sorted array : \n");
-  sort(arr, lenght);
+  //sort(arr, lenght);
+  merge (arr, 0,3,6);
+  
   for (int i = 0; i < lenght; ++i){
     printf(" %d",arr[i]);
   }
