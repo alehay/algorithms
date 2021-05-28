@@ -2,16 +2,16 @@
 #include <cstdlib>
 
 void merge (int * arr, int iter_start_first, int iter_start_second, int lenght) {
-  int left_range = iter_start_second - iter_start_first + 1; 
+  int left_range = iter_start_second - iter_start_first; 
   int right_range = lenght - iter_start_second;
   int * left_arr = (int*)malloc(sizeof(int)*left_range);
   int * right_arr = (int*)malloc(sizeof(int)*right_range);
 
   for (int i = 0; i < left_range ; ++i) {
-    left_arr[i] = arr[iter_start_first + i - 1]; // определить место -1 нужна ли она 
+    left_arr[i] = arr[iter_start_first + i]; 
   }  
   for (int j = 0; j < right_range; ++j) {
-    right_arr[j] = arr[iter_start_second+ j];
+    right_arr[j] = arr[iter_start_second + j];
   }
   for ( int i = 0, j = 0, k = iter_start_first ; k < lenght; ++k) {
     if (left_arr[i] < right_arr[j]) {
