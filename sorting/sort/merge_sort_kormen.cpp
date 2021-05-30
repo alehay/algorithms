@@ -19,7 +19,7 @@ void merge (int * arr, int begin, int median, int end) {
   right_arr[right_range] = INT_MAX;
 
   for ( int i = 0, j = 0, k = begin ; k < end; ++k) {
-    if (left_arr[i] < right_arr[j]) {
+    if (left_arr[i] <= right_arr[j]) {
         arr[k] = left_arr[i];
         ++i;
     } else {
@@ -37,7 +37,7 @@ void sort (int * arr, int begin,int end ) {
   if (begin < end) {
       int median = (begin+end) /2;
       sort(arr,begin,median);
-      sort(arr,median+1,end);
+      sort(arr,median + 1,end);
       merge(arr,begin, median, end);
       return;
   }
