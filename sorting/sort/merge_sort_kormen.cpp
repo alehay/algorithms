@@ -9,6 +9,7 @@ void merge (int * arr, int const begin, int const median, int const end) {
     return;
   }
 
+  //range
   int left_range = median - begin; 
   int right_range = end - median;
   
@@ -22,6 +23,7 @@ void merge (int * arr, int const begin, int const median, int const end) {
     right_arr[j] = arr[median + j];
   }
   
+  // the algorithm itself
   for (int i=0, j=0, k = begin; k < end; ++k) {
     if (left_arr[i] < right_arr[j]) {
       arr[k] = left_arr[i++];
@@ -67,8 +69,6 @@ int main (int argc, char * argv []) {
   }
   
   sort(arr, 0, lenght);
-  //merge (arr, 0,lenght/2,lenght);
-  //printf("\n median %d; lenght %d \n", lenght/2, lenght );
 
   printf("\n sorted array : \n");
   for (int i = 0; i < lenght; ++i){
@@ -77,5 +77,4 @@ int main (int argc, char * argv []) {
   printf("\n");
   free (arr);
   return 0;
-
 }
