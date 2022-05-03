@@ -1,40 +1,24 @@
-cmake_minimum_required(VERSION 3.5)
-project(sort)
-
-set(CMAKE_CXX_COMPILER g++)
-
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
-SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
-SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
-
-#add_compile_options(-Werror)
-add_compile_options(-pedantic-errors)
-add_compile_options(-Wall)
-add_compile_options(-Wextra)
-add_compile_options(-ggdb -g3 -O0)
-#add_compile_options(-fsanitize=address)
-add_compile_options(-Wcast-align)
-add_compile_options(-Wcast-qual)
-add_compile_options(-Wconversion)
-add_compile_options(-Wctor-dtor-privacy)
-add_compile_options(-Wduplicated-branches)
-add_compile_options(-Wduplicated-cond)
-add_compile_options(-Wextra-semi)
-add_compile_options(-Wfloat-equal)
-add_compile_options(-Wlogical-op)
-add_compile_options(-Wnon-virtual-dtor)
-add_compile_options(-Wold-style-cast)
-add_compile_options(-Woverloaded-virtual)
-add_compile_options(-Wredundant-decls)
-add_compile_options(-Wsign-conversion)
-add_compile_options(-Wsign-promo)
-add_compile_options(-lasan)
-add_compile_options(-pg)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 
 add_executable(insertion-sort-kormen insertion-sort-kormen.cpp)
+add_test(Test-insertion-sort insertion-sort-kormen 0 8 16 17 28 33 54 57 70 89 100 99 -3 -12 7 19 -99 20 5 100 0)
+set_tests_properties(Test-insertion-sort PROPERTIES
+PASS_REGULAR_EXPRESSION "-99 -12 -3 0 0 5 7 8 16 17 19 20 28 33 54 57 70 89 99 100 100")
+
+
 add_executable(merge_sort_kormen merge_sort_kormen.cpp)
+add_test(Test-merge_sort merge_sort_kormen 0 8 16 17 28 33 54 57 70 89 100 99 -3 -12 7 19 -99 20 5 100 0)
+set_tests_properties(Test-merge_sort PROPERTIES
+PASS_REGULAR_EXPRESSION "-99 -12 -3 0 0 5 7 8 16 17 19 20 28 33 54 57 70 89 99 100 100")
+
+
+
+add_executable(bubble_sort_kormen bubble_sort_kormen.cpp)
+add_test(Test_bubble_sort bubble_sort_kormen 0 8 16 17 28 33 54 57 70 89 100 99 -3 -12 7 19 -99 20 5 100 0)
+set_tests_properties(Test_bubble_sort PROPERTIES
+PASS_REGULAR_EXPRESSION "-99 -12 -3 0 0 5 7 8 16 17 19 20 28 33 54 57 70 89 99 100 100")
+
+#merge sorting without memory allocation 
+add_executable(merge_sort_kormen2 merge_sort_kormen2.cpp)
+add_test(Test_merge_sort_kormen2 merge_sort_kormen2 0 8 16 17 28 33 54 57 70 89 100 99 -3 -12 7 19 -99 20 5 100 0)
+set_tests_properties(Test_merge_sort_kormen2 PROPERTIES
+PASS_REGULAR_EXPRESSION "-99 -12 -3 0 0 5 7 8 16 17 19 20 28 33 54 57 70 89 99 100 100")
