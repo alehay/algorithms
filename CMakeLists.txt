@@ -35,7 +35,15 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+######### add google test static ##########
+set(GTEST_SRC ${CMAKE_CURRENT_SOURCE_DIR}/Gtest/src/gtest-all.cc)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Gtest/include)
+add_library(gtest STATIC ${GTEST_SRC})
+target_include_directories( gtest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Gtest)
+
 enable_testing()
+include(GoogleTest)
+
 
 add_subdirectory(sorting)
 
